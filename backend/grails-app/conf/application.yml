@@ -114,3 +114,13 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+---
+grails:
+    plugin:
+        springsecurity:
+            useRoleGroups: false
+            rest:
+                token:
+                    storage:
+                        jwt:
+                            secret: v5xSIEg4eAL4w2DKc1io5nvpqDA6zoTl # CHANGE FOR USE IN PRODUCTION!!
