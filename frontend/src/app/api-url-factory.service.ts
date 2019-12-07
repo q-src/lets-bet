@@ -5,8 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiUrlFactoryService {
 
-  public create(subPath: string): string {
-    return 'http://localhost:8080' + subPath; // TODO: Use dynamic value
+  public create(...subPathSegments: string[]): string {
+    return 'http://localhost:8080' + subPathSegments.join('/'); // TODO: Use dynamic value
   }
-
 }

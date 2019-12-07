@@ -21,4 +21,8 @@ export class BetApiService {
   public create(bet: Bet): Observable<Bet> {
     return this.http.post<Bet>(this.urlFactory.create(BetApiService.PATH), bet);
   }
+
+  public find(id: string): Observable<Bet> {
+    return this.http.get<Bet>(this.urlFactory.create(BetApiService.PATH, id));
+  }
 }

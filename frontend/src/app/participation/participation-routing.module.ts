@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ParticipationCreateComponent } from './participation-create/participation-create.component';
+import { BetResolverService } from '../bet-api/bet-resolver.service';
 
 
 const routes: Routes = [
   {
     path: 'create/:betId',
     component: ParticipationCreateComponent,
+    resolve: {
+      bet: BetResolverService
+    }
   }
 ];
 
@@ -14,4 +18,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ParticipationRoutingModule { }
+export class ParticipationRoutingModule {
+}
