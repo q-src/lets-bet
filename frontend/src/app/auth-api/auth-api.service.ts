@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ApiUrlFactoryService } from '../api-url-factory.service';
 import { map, tap } from 'rxjs/operators';
 import { TokenResponse } from './token-response';
@@ -19,6 +19,10 @@ export class AuthApiService {
     private urlFactory: ApiUrlFactoryService,
     private authState: AuthStateService,
   ) {
+  }
+
+  public requiresAuth(request: HttpRequest<any>): boolean {
+    return !request.url.endsWith(AuthApiService.PATH);
   }
 
   public login(username: string, password: string): Observable<boolean> {
