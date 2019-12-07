@@ -3,7 +3,7 @@ package letsbet
 
 import grails.rest.*
 
-@Resource(readOnly = false, formats = ['json', 'xml'])
+@Resource(readOnly = false, formats = ['json', 'xml'], superClass = BetSuperController)
 class Bet {
 
     User commissioner
