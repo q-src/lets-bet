@@ -6,6 +6,7 @@ import { BetCreateComponent } from './bet-create/bet-create.component';
 import { BetFormComponent } from './bet-form/bet-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule, MatFormFieldModule, MatGridListModule, MatInputModule} from '@angular/material';
+import {BetApiModule} from '../bet-api/bet-api.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {MatButtonModule, MatFormFieldModule, MatGridListModule, MatInputModule} 
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    BetApiModule,
     BetRoutingModule
   ]
 })

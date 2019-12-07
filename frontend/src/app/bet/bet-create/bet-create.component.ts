@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Bet} from '../bet';
+import {Bet} from '../../bet-api/bet';
+import { BetApiService } from '../../bet-api/bet-api.service';
 
 @Component({
   selector: 'app-bet-create',
@@ -10,13 +11,15 @@ export class BetCreateComponent implements OnInit {
 
   bet: Bet;
 
-  constructor() { }
+  constructor(
+    private api: BetApiService,
+  ) { }
 
   ngOnInit() {
     this.bet = {} as Bet;
   }
 
   save() {
-    console.log('saving', this.bet);
+    this.api.create(this.bet).subscribe();
   }
 }

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BetFormComponent } from './bet-form.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Bet } from '../bet';
+import { Bet } from '../../bet-api/bet';
 
 describe('BetFormComponent', () => {
   let component: BetFormComponent;
