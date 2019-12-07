@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: () => import('./bet/bet.module').then(mod => mod.BetModule),
   },
   {
+    path: 'participation',
+    loadChildren: () => import('./participation/participation.module').then(mod => mod.ParticipationModule),
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then(mod => mod.LoginModule),
   }
