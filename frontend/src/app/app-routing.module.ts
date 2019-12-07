@@ -7,6 +7,10 @@ const routes: Routes = [
     path: 'bet',
     loadChildren: () => import('./bet/bet.module').then(mod => mod.BetModule),
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(mod => mod.LoginModule),
+  }
 ];
 
 @NgModule({
