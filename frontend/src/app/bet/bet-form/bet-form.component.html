@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <input matInput formControlName="title" placeholder="Title">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput formControlName="description" placeholder="What is it about?"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput formControlName="rules" placeholder="What are the rules?"></textarea>
+  </mat-form-field>
+  <ng-content></ng-content>
+</form>

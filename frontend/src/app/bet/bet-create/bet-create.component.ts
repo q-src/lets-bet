@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Bet} from '../bet';
 
 @Component({
   selector: 'app-bet-create',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BetCreateComponent implements OnInit {
 
+  bet: Bet;
+
   constructor() { }
 
   ngOnInit() {
+    this.bet = {} as Bet;
   }
 
+  save() {
+    console.log('saving', this.bet);
+  }
 }
