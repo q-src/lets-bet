@@ -7,6 +7,7 @@ import { BetApiModule } from '../bet-api/bet-api.module';
 import { ParticipationFormComponent } from './participation-form/participation-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule } from '@angular/material';
+import { ParticipationApiModule } from '../participation-api/participation-api.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { MatButtonModule, MatInputModule } from '@angular/material';
     MatInputModule,
     MatButtonModule,
     BetApiModule,
+    ParticipationApiModule,
     ParticipationRoutingModule
   ]
 })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Participation } from '../participation';
+import { ParticipationApiService } from '../../participation-api/participation-api.service';
+import { Participation } from '../../participation-api/participation';
 
 @Component({
   selector: 'app-participation-create',
@@ -12,7 +13,8 @@ export class ParticipationCreateComponent implements OnInit {
   participation: Participation;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private api: ParticipationApiService,
   ) {
   }
 
@@ -23,6 +25,6 @@ export class ParticipationCreateComponent implements OnInit {
   }
 
   save() {
-    console.log('saving', this.participation);
+    this.api.create(this.participation).subscribe();
   }
 }
