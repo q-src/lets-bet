@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Participation } from '../participation';
 
 @Component({
   selector: 'app-participation-create',
@@ -8,13 +9,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ParticipationCreateComponent implements OnInit {
 
+  participation: Participation;
+
   constructor(
     private route: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
-    console.log('for bet', this.route.snapshot.data.bet);
+    this.participation = {
+      bet: this.route.snapshot.data.bet,
+    } as Participation;
   }
 
+  save() {
+    console.log('saving', this.participation);
+  }
 }

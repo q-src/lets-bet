@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ParticipationCreateComponent } from './participation-create.component';
 import { Bet } from '../../bet-api/bet';
 import { ActivatedRoute } from '@angular/router';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ParticipationCreateComponent', () => {
   let component: ParticipationCreateComponent;
@@ -11,6 +12,7 @@ describe('ParticipationCreateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [ ParticipationCreateComponent ],
       providers: [
         {
