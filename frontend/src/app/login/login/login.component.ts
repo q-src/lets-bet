@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthApiService } from '../../auth-api/auth-api.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private api: AuthApiService,
   ) {
   }
 
@@ -23,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log('login', this.form.value.username, this.form.value.password);
+    this.api.login(this.form.value.username, this.form.value.password).subscribe();
   }
 
 }
