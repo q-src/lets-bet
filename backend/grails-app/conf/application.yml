@@ -124,3 +124,5 @@ grails:
                     storage:
                         jwt:
                             secret: v5xSIEg4eAL4w2DKc1io5nvpqDA6zoTl # CHANGE FOR USE IN PRODUCTION!!
+    cors:
+        enabled: true
