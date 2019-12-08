@@ -9,10 +9,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule, MatListModule } from '@angular/material';
 import { ParticipationApiModule } from '../participation-api/participation-api.module';
 import { ParticipationListComponent } from './participation-list/participation-list.component';
+import { ParticipationEditComponent } from './participation-edit/participation-edit.component';
 
 
 @NgModule({
-  declarations: [ParticipationCreateComponent, ParticipationFormComponent, ParticipationListComponent],
+  declarations: [ParticipationCreateComponent, ParticipationFormComponent, ParticipationListComponent, ParticipationEditComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

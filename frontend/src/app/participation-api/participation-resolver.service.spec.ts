@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ParticipationListResolverService } from './participation-list-resolver.service';
+import { ParticipationResolverService } from './participation-resolver.service';
 import { ParticipationApiService } from './participation-api.service';
 import createSpyObj = jasmine.createSpyObj;
 
-describe('ParticipationListResolverService', () => {
+describe('ParticipationResolverService', () => {
 
   let api: ParticipationApiService;
 
@@ -13,19 +13,19 @@ describe('ParticipationListResolverService', () => {
     TestBed.configureTestingModule({
       providers: [
         {
-          provide: ParticipationApiService,
-          useValue: api,
+          provide: ParticipationResolverService,
+          useClass: ParticipationResolverService,
         },
         {
-          provide: ParticipationListResolverService,
-          useClass: ParticipationListResolverService,
+          provide: ParticipationApiService,
+          useValue: api
         }
       ]
     });
   });
 
   it('should be created', () => {
-    const service: ParticipationListResolverService = TestBed.get(ParticipationListResolverService);
+    const service: ParticipationResolverService = TestBed.get(ParticipationResolverService);
     expect(service).toBeTruthy();
   });
 });

@@ -4,6 +4,8 @@ import { ParticipationCreateComponent } from './participation-create/participati
 import { BetResolverService } from '../bet-api/bet-resolver.service';
 import { ParticipationListComponent } from './participation-list/participation-list.component';
 import { ParticipationListResolverService } from '../participation-api/participation-list-resolver.service';
+import { ParticipationEditComponent } from './participation-edit/participation-edit.component';
+import { ParticipationResolverService } from '../participation-api/participation-resolver.service';
 
 
 const routes: Routes = [
@@ -12,6 +14,13 @@ const routes: Routes = [
     component: ParticipationListComponent,
     resolve: {
       participations: ParticipationListResolverService,
+    }
+  },
+  {
+    path: ':id',
+    component: ParticipationEditComponent,
+    resolve: {
+      participation: ParticipationResolverService,
     }
   },
   {

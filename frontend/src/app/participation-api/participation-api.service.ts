@@ -21,6 +21,13 @@ export class ParticipationApiService {
     return this.http.post<Participation>(this.urlFactory.create(ParticipationApiService.PATH), participation);
   }
 
+  public update(participation: Participation): Observable<Participation> {
+    return this.http.put<Participation>(this.urlFactory.create(ParticipationApiService.PATH, participation.id), participation);
+  }
+
+  public find(id: string): Observable<Participation> {
+    return this.http.get<Participation>(this.urlFactory.create(ParticipationApiService.PATH, id));
+  }
 
   public list(): Observable<Participation[]> {
     return this.http.get<Participation[]>(this.urlFactory.create(ParticipationApiService.PATH));
