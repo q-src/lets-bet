@@ -22,6 +22,10 @@ export class BetApiService {
     return this.http.post<Bet>(this.urlFactory.create(BetApiService.PATH), bet);
   }
 
+  public update(bet: Bet): Observable<Bet> {
+    return this.http.put<Bet>(this.urlFactory.create(BetApiService.PATH, bet.id), bet);
+  }
+
   public find(id: string): Observable<Bet> {
     return this.http.get<Bet>(this.urlFactory.create(BetApiService.PATH, id));
   }
