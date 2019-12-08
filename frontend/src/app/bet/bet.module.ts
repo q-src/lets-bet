@@ -9,10 +9,12 @@ import { MatButtonModule, MatFormFieldModule, MatGridListModule, MatInputModule,
 import {BetApiModule} from '../bet-api/bet-api.module';
 import { BetEditComponent } from './bet-edit/bet-edit.component';
 import { BetListComponent } from './bet-list/bet-list.component';
+import { BetQrcodeComponent } from './bet-qrcode/bet-qrcode.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 @NgModule({
-  declarations: [BetCreateComponent, BetFormComponent, BetEditComponent, BetListComponent],
+  declarations: [BetCreateComponent, BetFormComponent, BetEditComponent, BetListComponent, BetQrcodeComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -20,6 +22,7 @@ import { BetListComponent } from './bet-list/bet-list.component';
     MatFormFieldModule,
     MatButtonModule,
     MatListModule,
+    QRCodeModule,
     BetApiModule,
     BetRoutingModule
   ]
