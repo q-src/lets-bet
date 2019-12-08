@@ -3,10 +3,14 @@ package letsbet
 
 import grails.rest.*
 
-@Resource(readOnly = false, formats = ['json', 'xml'], superClass = BetSuperController)
+@Resource(readOnly = false, formats = ['json'], superClass = BetSuperController)
 class Bet {
 
-    User commissioner
+    // FIXME: Causes EntityActionVetoException
+    // static hasMany = [participations: Participation]
+
+    static belongsTo = [commissioner: User]
+
     String title
     String description
     String rules

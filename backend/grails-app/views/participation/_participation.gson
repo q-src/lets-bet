@@ -1,0 +1,15 @@
+import letsbet.Participation
+
+model {
+    Participation participation
+}
+json {
+    statement participation.statement
+    participant tmpl.render(participation.participant)
+    bet {
+        id participation.bet.id
+        title participation.bet.title
+        description participation.bet.description
+        commissioner tmpl.render(participation.bet.commissioner)
+    }
+}

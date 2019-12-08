@@ -1,7 +1,7 @@
 package letsbet
 
 
-import grails.rest.*
+import grails.rest.RestfulController
 
 class BetSuperController extends RestfulController<Bet> {
 

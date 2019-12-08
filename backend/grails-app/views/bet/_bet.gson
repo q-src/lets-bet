@@ -1,0 +1,12 @@
+import letsbet.Bet
+
+model {
+    Bet bet
+}
+json {
+    id bet.id
+    title bet.title
+    description bet.description
+    commissioner tmpl.render(bet.commissioner)
+    // participations tmpl.render(bet.participations) TODO: Add participants at least on resource GET
+}

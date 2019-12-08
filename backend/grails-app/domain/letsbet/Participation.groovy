@@ -1,13 +1,20 @@
 package letsbet
 
 
-import grails.rest.*
+import grails.rest.Resource
 
 @Resource(readOnly = false, formats = ['json', 'xml'], superClass = ParticipationSuperController)
 class Participation {
 
-    Bet bet
-    User user
-    String statement
+    static mapping = {
+        bet lazy: false
+        participant lazy: false
+    }
 
+    static belongsTo = [
+            bet: Bet,
+            participant: User
+    ]
+
+    String statement
 }

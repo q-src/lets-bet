@@ -2,10 +2,8 @@ package letsbet
 
 
 import grails.rest.*
-import grails.converters.*
-import org.springframework.web.bind.annotation.RequestMapping
 
-class ParticipationSuperController extends RestfulController {
+class ParticipationSuperController extends RestfulController<Participation> {
 
     def springSecurityService
 
@@ -20,7 +18,12 @@ class ParticipationSuperController extends RestfulController {
     @Override
     protected Participation createResource() {
         Participation participation = super.createResource() as Participation
-        participation.user = springSecurityService.currentUser
+        participation.participant = springSecurityService.currentUser
         participation
+    }
+
+    @Override
+    protected List listAllResources(Map params) {
+        return Participation.findAllByParticipant(springSecurityService.currentUser as User)
     }
 }
