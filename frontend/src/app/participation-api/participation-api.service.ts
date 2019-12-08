@@ -20,4 +20,9 @@ export class ParticipationApiService {
   public create(participation: Participation): Observable<Participation> {
     return this.http.post<Participation>(this.urlFactory.create(ParticipationApiService.PATH), participation);
   }
+
+
+  public list(): Observable<Participation[]> {
+    return this.http.get<Participation[]>(this.urlFactory.create(ParticipationApiService.PATH));
+  }
 }
