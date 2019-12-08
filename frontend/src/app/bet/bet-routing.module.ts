@@ -16,15 +16,15 @@ const routes: Routes = [
     }
   },
   {
+    path: 'create',
+    component: BetCreateComponent,
+  },
+  {
     path: ':betId',
     component: BetEditComponent,
     resolve: {
       bet: BetResolverService,
     }
-  },
-  {
-    path: 'create',
-    component: BetCreateComponent,
   }
 ];
 
