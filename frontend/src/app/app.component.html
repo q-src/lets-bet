@@ -3,6 +3,10 @@
     <mat-icon>menu</mat-icon>
   </button>
   <h1>let's bet!</h1>
+  <span class="spacer"></span>
+  <a routerLink="scan" mat-icon-button>
+    <mat-icon class="scan-icon" aria-hidden="false" aria-label="Scan QR Code">camera</mat-icon>
+  </a>
 </mat-toolbar>
 <mat-sidenav-container (backdropClick)="sidenav.close()">
   <mat-sidenav #sidenav (keydown.escape)="sidenav.close()" disableClose>

@@ -5,3 +5,14 @@ mat-sidenav-container {
   left: 0;
   right: 0;
 }
+
+mat-toolbar {
+
+  mat-icon.scan-icon {
+    padding: 0 14px;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+}

@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./participation/participation.module').then(mod => mod.ParticipationModule),
   },
   {
+    path: 'scan',
+    loadChildren: () => import('./scan/scan.module').then(mod => mod.ScanModule),
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then(mod => mod.LoginModule),
   }
