@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Participation } from '../../participation-api/participation';
 
 @Component({
   selector: 'app-participation-list',
@@ -8,12 +9,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ParticipationListComponent implements OnInit {
 
+  participations: Participation[];
+
   constructor(
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    console.log('participations', this.route.snapshot.data.participations);
+    this.participations = this.route.snapshot.data.participations;
   }
 
 }

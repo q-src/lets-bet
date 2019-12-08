@@ -1,1 +1,6 @@
-<p>participation-list works!</p>
+<mat-list>
+  <mat-list-item *ngFor="let participation of participations">
+    <h4 mat-line>{{participation.bet.title}}</h4>
+    <p mat-line>{{participation.bet.description}}</p>
+  </mat-list-item>
+</mat-list>

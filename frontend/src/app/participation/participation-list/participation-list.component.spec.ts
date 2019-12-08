@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ParticipationListComponent } from './participation-list.component';
 import { ActivatedRoute } from '@angular/router';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ParticipationListComponent', () => {
   let component: ParticipationListComponent;
@@ -9,6 +10,7 @@ describe('ParticipationListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [ParticipationListComponent],
       providers: [
         {
