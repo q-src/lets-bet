@@ -29,4 +29,8 @@ export class BetApiService {
   public find(id: string): Observable<Bet> {
     return this.http.get<Bet>(this.urlFactory.create(BetApiService.PATH, id));
   }
+
+  public list(): Observable<Bet[]> {
+    return this.http.get<Bet[]>(this.urlFactory.create(BetApiService.PATH));
+  }
 }
