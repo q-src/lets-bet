@@ -1,4 +1,25 @@
-<app-bet-form [bet]="bet">
-  <button mat-button color="primary" (click)="save()">Save</button>
-</app-bet-form>
-<app-bet-qrcode [bet]="bet"></app-bet-qrcode>
+<mat-vertical-stepper [linear]="true" #stepper>
+  <mat-step>
+    <ng-template matStepLabel>Specify the rules</ng-template>
+    <app-bet-form [bet]="bet">
+      <button mat-button color="primary" (click)="save()">Save</button>
+    </app-bet-form>
+  </mat-step>
+  <mat-step [completed]="isStarted()">
+    <ng-template matStepLabel>Start the bet</ng-template>
+    <div *ngIf="!isStarted(); else startedElse">
+      <p>As soon as the bet is started, the rules can no longer be changed.</p>
+      <button mat-raised-button color="primary">Start</button>
+    </div>
+    <ng-template #startedElse>
+      <p>The bet has already been started.</p>
+    </ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Invite participants</ng-template>
+    <app-bet-qrcode [bet]="bet"></app-bet-qrcode>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Decide who won</ng-template>
+  </mat-step>
+</mat-vertical-stepper>

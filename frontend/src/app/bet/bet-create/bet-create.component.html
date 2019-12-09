@@ -1,3 +1,18 @@
-<app-bet-form [bet]="bet">
-  <button mat-button color="primary" (click)="save()">Save</button>
-</app-bet-form>
+<mat-vertical-stepper [linear]="true" #stepper>
+  <mat-step [completed]="false">
+  <ng-template matStepLabel>Specify the rules</ng-template>
+    <app-bet-form [bet]="bet" #form>
+      <button mat-button color="primary" (click)="save()">Save</button>
+    </app-bet-form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Start the bet</ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Invite participants</ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Decide who won</ng-template>
+  </mat-step>
+</mat-vertical-stepper>
+

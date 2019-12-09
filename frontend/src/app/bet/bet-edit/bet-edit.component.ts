@@ -26,5 +26,8 @@ export class BetEditComponent implements OnInit {
     this.api.update(this.bet).subscribe();
   }
 
+  isStarted() {
+    return this.bet.status === 'STARTED';
+  }
 
 }

@@ -3,4 +3,5 @@ export interface Bet {
   title: string;
   description: string;
   rules: string;
+  status: 'CREATED' | 'STARTED' | 'COMPLETED';
 }
