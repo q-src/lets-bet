@@ -14,6 +14,9 @@ export class BetFormComponent implements OnInit, OnDestroy {
   @Input()
   bet: Bet;
 
+  @Input()
+  disabled = false;
+
   form: FormGroup;
 
   private destroy$: Subject<void> = new Subject<void>();
@@ -25,9 +28,18 @@ export class BetFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.form = this.fb.group({
-      title: this.fb.control(this.bet.title),
-      description: this.fb.control(this.bet.description),
-      rules: this.fb.control(this.bet.rules),
+      title: this.fb.control({
+        value: this.bet.title,
+        disabled: this.disabled,
+      }),
+      description: this.fb.control({
+        value: this.bet.description,
+        disabled: this.disabled
+      }),
+      rules: this.fb.control({
+        value: this.bet.rules,
+        disabled: this.disabled,
+      }),
     });
     this.form.valueChanges
       .pipe(takeUntil(this.destroy$))
