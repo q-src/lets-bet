@@ -1,6 +1,10 @@
-<mat-list>
-  <mat-list-item *ngFor="let bet of bets">
+<mat-nav-list>
+  <a *ngFor="let bet of bets" mat-list-item [routerLink]="bet.id">
     <h4 mat-line>{{bet.title}}</h4>
     <p mat-line>{{bet.description}}</p>
-  </mat-list-item>
-</mat-list>
+  </a>
+</mat-nav-list>
+
+<a mat-fab aria-label="Create a bet" routerLink="create">
+  <mat-icon>add</mat-icon>
+</a>
