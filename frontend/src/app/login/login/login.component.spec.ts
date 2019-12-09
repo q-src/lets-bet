@@ -7,18 +7,25 @@ import { Subject } from 'rxjs';
 import { Bet } from '../../bet-api/bet';
 import { AuthApiService } from '../../auth-api/auth-api.service';
 import createSpyObj = jasmine.createSpyObj;
+import { Router } from '@angular/router';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let api: AuthApiService;
+  let router: Router;
 
   beforeEach(async(() => {
     api = createSpyObj('AuthApiService', {login: new Subject<Bet>()});
+    router = createSpyObj('Router', ['navigate']);
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [LoginComponent],
       providers: [
+        {
+          provide: Router,
+          useValue: router,
+        },
         {
           provide: FormBuilder,
           useClass: FormBuilder,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ParticipationApiService } from '../../participation-api/participation-api.service';
 import { Participation } from '../../participation-api/participation';
 
@@ -14,6 +14,7 @@ export class ParticipationCreateComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private api: ParticipationApiService,
   ) {
   }
@@ -25,6 +26,8 @@ export class ParticipationCreateComponent implements OnInit {
   }
 
   save() {
-    this.api.create(this.participation).subscribe();
+    this.api.create(this.participation).subscribe(participation => this.router.navigate(['../..', participation.id], {
+      relativeTo: this.route
+    }));
   }
 }
