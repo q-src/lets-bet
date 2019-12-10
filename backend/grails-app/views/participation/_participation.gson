@@ -4,6 +4,7 @@ model {
     Participation participation
 }
 json {
+    id participation.id
     statement participation.statement
     participant tmpl.render(participation.participant)
     bet {

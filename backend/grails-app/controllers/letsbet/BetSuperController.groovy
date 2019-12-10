@@ -19,7 +19,7 @@ class BetSuperController extends RestfulController<Bet> {
     protected Bet createResource() {
         Bet bet = super.createResource() as Bet
         bet.commissioner = springSecurityService.currentUser
-        bet.status = Bet.Status.CREATED
+        bet.isStarted = false
         bet
     }
 }

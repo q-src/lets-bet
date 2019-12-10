@@ -18,13 +18,12 @@ class Participation {
 
     static constraints = {
         bet(validator: { Bet bet ->
-            def persistedStatus = bet.getPersistentValue('status')
-            if (persistedStatus != Bet.Status.STARTED) {
+            def persistedIsStarted = bet.getPersistentValue('isStarted')
+            if (!persistedIsStarted) {
                 return ['betMustBeStarted']
             }
         })
     }
-
 
     String statement
 }

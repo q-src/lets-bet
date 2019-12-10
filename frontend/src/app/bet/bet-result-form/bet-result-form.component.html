@@ -1,0 +1,13 @@
+<form [formGroup]="form">
+  <mat-selection-list #selection [disabled]="disabled">
+    <mat-list-option *ngFor="let participation of bet.participations" [value]="participation.id"
+                     [selected]="isSelected(participation)">
+      <h4 mat-line>{{participation.participant.username}}</h4>
+      <p mat-line>{{participation.statement}}</p>
+    </mat-list-option>
+  </mat-selection-list>
+  <mat-form-field>
+    <textarea matInput formControlName="reasoning" placeholder="What are the reasons for your decision?"></textarea>
+  </mat-form-field>
+  <button *ngIf="!bet.result" mat-button color="primary" (click)="complete()">Complete bet</button>
+</form>

@@ -5,5 +5,6 @@ export interface Participation {
   id: string;
   bet: Bet;
   statement: string;
+  isWon: boolean;
 
 }

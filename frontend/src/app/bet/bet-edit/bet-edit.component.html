@@ -1,25 +1,26 @@
 <mat-vertical-stepper [linear]="true" #stepper>
   <mat-step>
     <ng-template matStepLabel>Specify the rules</ng-template>
-    <app-bet-form [bet]="bet" [disabled]="isStarted()">
-      <button *ngIf="!isStarted()" mat-button color="primary" (click)="save()">Save</button>
+    <app-bet-form [bet]="bet" [disabled]="bet.isStarted || isCompleted()">
+      <button *ngIf="!bet.isStarted" mat-button color="primary" (click)="save()">Save</button>
     </app-bet-form>
   </mat-step>
-  <mat-step [completed]="isStarted()">
+  <mat-step [completed]="bet.isStarted || isCompleted()">
     <ng-template matStepLabel>Start the bet</ng-template>
-    <div *ngIf="!isStarted(); else startedElse">
+    <div *ngIf="bet.isStarted; else notStarted">
+      <p>The bet has already been started.</p>
+    </div>
+    <ng-template #notStarted>
       <p>As soon as the bet is started, the rules can no longer be changed.</p>
       <button mat-raised-button color="primary" (click)="start()">Start</button>
-    </div>
-    <ng-template #startedElse>
-      <p>The bet has already been started.</p>
     </ng-template>
   </mat-step>
-  <mat-step>
+  <mat-step [completed]="bet.isStarted || isCompleted()">
     <ng-template matStepLabel>Invite participants</ng-template>
     <app-bet-qrcode [bet]="bet"></app-bet-qrcode>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Decide who won</ng-template>
+    <app-bet-result-form [bet]="bet" [disabled]="isCompleted()"></app-bet-result-form>
   </mat-step>
 </mat-vertical-stepper>

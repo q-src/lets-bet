@@ -7,6 +7,16 @@ json {
     id bet.id
     title bet.title
     description bet.description
+    rules bet.rules
     commissioner tmpl.render(bet.commissioner)
-    // participations tmpl.render(bet.participations) TODO: Add participants at least on resource GET
+    isStarted bet.isStarted
+    if (bet.participations) {
+        participations tmpl.render(bet.participations)
+    }
+    if (bet.result) {
+        result {
+            reasoning bet.result.reasoning
+            winners tmpl.render(bet.result.winners)
+        }
+    }
 }

@@ -11,12 +11,6 @@ import { MatStepper } from '@angular/material';
 })
 export class BetEditComponent implements OnInit, AfterViewInit {
 
-  private static readonly STATUS_CRATED = 'CREATED';
-
-  private static readonly STATUS_STARTED = 'STARTED';
-
-  private static readonly STATUS_COMPLETED = 'COMPLETED';
-
   @ViewChild('stepper', {static: false})
   private stepper: MatStepper;
 
@@ -40,25 +34,22 @@ export class BetEditComponent implements OnInit, AfterViewInit {
     this.api.update(this.bet).subscribe();
   }
 
-  isStarted() {
-    return this.bet.status === BetEditComponent.STATUS_STARTED;
+  isCompleted() {
+    return !!this.bet.result;
   }
 
   start() {
-    this.bet.status = BetEditComponent.STATUS_STARTED;
+    this.bet.isStarted = true;
     this.api.update(this.bet).subscribe(() => this.stepper.next());
   }
 
   private activateNextStep() {
-    switch (this.bet.status) {
-      case BetEditComponent.STATUS_CRATED:
-        this.setStepperIndex(1);
-        break;
-      case BetEditComponent.STATUS_STARTED:
-        this.setStepperIndex(2);
-        break;
-      case BetEditComponent.STATUS_COMPLETED:
-        this.setStepperIndex(3);
+    if (!this.bet.isStarted) {
+      this.setStepperIndex(1);
+    } else if (!this.isCompleted()) {
+      this.setStepperIndex(2);
+    } else if (this.isCompleted()) {
+      this.setStepperIndex(3);
     }
   }
 
