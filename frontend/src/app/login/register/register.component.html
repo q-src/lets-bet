@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <input matInput formControlName="username" placeholder="Username">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="password" placeholder="Password" type="password">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="passwordRepeat" placeholder="Password Repeat" type="password">
+  </mat-form-field>
+  <button type="submit" color="primary" [disabled]="form.invalid" (click)="register()" mat-button>Register</button>
+</form>

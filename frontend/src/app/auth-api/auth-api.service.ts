@@ -22,7 +22,7 @@ export class AuthApiService {
   }
 
   public requiresAuth(request: HttpRequest<any>): boolean {
-    return !request.url.endsWith(AuthApiService.PATH);
+    return !request.url.endsWith(AuthApiService.PATH) && !request.url.endsWith('/user');
   }
 
   public login(username: string, password: string): Observable<boolean> {
@@ -32,6 +32,13 @@ export class AuthApiService {
     ).pipe(
       map(response => this.processResponse(response))
     );
+  }
+
+  public register(username: string, password: string) {
+    return this.http.post<any>(this.urlFactory.create('/user'), {
+      username,
+      password,
+    });
   }
 
   private processResponse(response: TokenResponse): boolean {
