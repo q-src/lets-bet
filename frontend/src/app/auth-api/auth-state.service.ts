@@ -12,6 +12,10 @@ export class AuthStateService {
   constructor() {
   }
 
+  public reset() {
+    localStorage.removeItem(AuthStateService.TOKEN_KEY);
+  }
+
   public update(token: TokenResponse): void {
     localStorage.setItem(AuthStateService.TOKEN_KEY, token.access_token);
   }
