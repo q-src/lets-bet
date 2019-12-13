@@ -24,6 +24,15 @@ class ParticipationSuperController extends RestfulController<Participation> {
 
     @Override
     protected List listAllResources(Map params) {
-        return Participation.findAllByParticipant(springSecurityService.currentUser as User)
+        Participation.findAllByParticipant(springSecurityService.currentUser as User)
+    }
+
+    @Override
+    protected Participation queryForResource(Serializable id) {
+        def resource = super.queryForResource(id) as Participation
+        if (resource?.participant != springSecurityService.currentUser) {
+            return
+        }
+        resource
     }
 }
