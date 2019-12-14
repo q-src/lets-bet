@@ -1,6 +1,7 @@
 package letsbet
 
 import grails.rest.RestfulController
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.access.AccessDeniedException
 
 import javax.transaction.Transactional
@@ -10,7 +11,12 @@ import static org.springframework.http.HttpStatus.FORBIDDEN
 @Transactional
 class BetSuperController extends RestfulController<Bet> {
 
-    def springSecurityService
+    @Autowired
+    AuthService auth
+
+    BetSuperController() {
+        this(Bet)
+    }
 
     BetSuperController(Class<Bet> domainClass) {
         this(domainClass, false)
@@ -23,19 +29,19 @@ class BetSuperController extends RestfulController<Bet> {
     @Override
     protected Bet createResource() {
         Bet bet = super.createResource() as Bet
-        bet.commissioner = springSecurityService.currentUser
+        bet.commissioner = auth.getCurrentUser()
         bet.isStarted = false
         bet
     }
 
     @Override
     protected List<Bet> listAllResources(Map params) {
-        Bet.findAllByCommissioner(springSecurityService.currentUser as User)
+        Bet.findAllByCommissioner(auth.getCurrentUser())
     }
 
     @Override
     protected Bet updateResource(Bet resource) {
-        if (resource.getPersistentValue("commissioner") != springSecurityService.currentUser) {
+        if (!auth.isOwner(resource)) {
             throw new AccessDeniedException("Bets can only be updated by the corresponding commissioner.")
         }
         return super.updateResource(resource) as Bet
