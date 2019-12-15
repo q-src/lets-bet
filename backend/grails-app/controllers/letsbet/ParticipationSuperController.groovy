@@ -2,10 +2,16 @@ package letsbet
 
 
 import grails.rest.*
+import org.springframework.beans.factory.annotation.Autowired
 
 class ParticipationSuperController extends RestfulController<Participation> {
 
-    def springSecurityService
+    @Autowired
+    AuthService auth
+
+    ParticipationSuperController() {
+        this(Participation)
+    }
 
     ParticipationSuperController(Class<Participation> domainClass) {
         this(domainClass, false)
@@ -18,19 +24,19 @@ class ParticipationSuperController extends RestfulController<Participation> {
     @Override
     protected Participation createResource() {
         Participation participation = super.createResource() as Participation
-        participation.participant = springSecurityService.currentUser
+        participation.participant = auth.getCurrentUser()
         participation
     }
 
     @Override
     protected List listAllResources(Map params) {
-        Participation.findAllByParticipant(springSecurityService.currentUser as User)
+        Participation.findAllByParticipant(auth.getCurrentUser())
     }
 
     @Override
     protected Participation queryForResource(Serializable id) {
         def resource = super.queryForResource(id) as Participation
-        if (resource?.participant != springSecurityService.currentUser) {
+        if (!auth.isOwner(resource)) {
             return
         }
         resource

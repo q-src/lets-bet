@@ -18,8 +18,7 @@ class Participation {
 
     static constraints = {
         bet(validator: { Bet bet ->
-            def persistedIsStarted = bet.getPersistentValue('isStarted')
-            if (!persistedIsStarted) {
+            if (bet.isDirty('commissioner') && !bet.getPersistentValue('isStarted') || !bet.isStarted) {
                 return ['betMustBeStarted']
             }
         })

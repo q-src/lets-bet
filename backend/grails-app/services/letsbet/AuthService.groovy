@@ -12,7 +12,17 @@ class AuthService {
         springSecurityService.currentUser as User
     }
 
-    def isOwner(Bet bet) {
+    boolean isOwner(Bet bet) {
+        if (null == bet) {
+            return false
+        }
         bet.getPersistentValue('commissioner') == getCurrentUser()
+    }
+
+    boolean isOwner(Participation participation) {
+        if (null == participation) {
+            return false
+        }
+        participation.getPersistentValue('participant') == getCurrentUser()
     }
 }
