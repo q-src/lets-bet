@@ -6,7 +6,7 @@ import { ParticipationCreateComponent } from './participation-create/participati
 import { BetApiModule } from '../bet-api/bet-api.module';
 import { ParticipationFormComponent } from './participation-form/participation-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatInputModule, MatListModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatListModule, MatTabsModule } from '@angular/material';
 import { ParticipationApiModule } from '../participation-api/participation-api.module';
 import { ParticipationListComponent } from './participation-list/participation-list.component';
 import { ParticipationEditComponent } from './participation-edit/participation-edit.component';
@@ -18,6 +18,7 @@ import { ParticipationEditComponent } from './participation-edit/participation-e
     CommonModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatTabsModule,
     MatButtonModule,
     MatListModule,
     BetApiModule,

@@ -1,5 +1,6 @@
 import { Participation } from '../participation-api/participation';
 import { Result } from '../result-api/result';
+import { User } from '../auth-api/user';
 
 export interface Bet {
   id: string;
@@ -7,6 +8,7 @@ export interface Bet {
   description: string;
   rules: string;
   isStarted: boolean;
-  pariticipations: Participation[];
+  commissioner: User;
+  participations: Participation[];
   result: Result;
 }

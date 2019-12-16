@@ -10,7 +10,13 @@ json {
     bet {
         id participation.bet.id
         title participation.bet.title
+        rules participation.bet.rules
         description participation.bet.description
         commissioner tmpl.render(participation.bet.commissioner)
+        participations participation.bet.participations, { Participation participation ->
+            id participation.id
+            statement participation.statement
+            participant tmpl.render(participation.participant)
+        }
     }
 }

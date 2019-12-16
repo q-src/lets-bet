@@ -42,7 +42,10 @@ class ParticipationSuperControllerSpec extends Specification implements Controll
 
         then:
         response.status == 200
-        response.text == '[{"id":1,"statement":"s-1","participant":{"id":1,"username":"user1"},"bet":{"id":1,"title":"t-1","description":"d-1","commissioner":{"id":1,"username":"user1"}}}]'
+        response.text == '[{"id":1,"statement":"s-1","participant":{"id":1,"username":"user1"},"bet":{"id":1,"' +
+                'title":"t-1","rules":"r-1","description":"d-1","commissioner":{"id":1,"username":"user1"},' +
+                '"participations":[{"id":1,"statement":"s-1","participant":{"id":1,"username":"user1"}},' +
+                '{"id":2,"statement":"s-2","participant":{"id":2,"username":"user1"}}]}}]'
         Participation.count() == 2
     }
 
@@ -54,7 +57,11 @@ class ParticipationSuperControllerSpec extends Specification implements Controll
 
         then:
         response.status == 201
-        response.text == '{"id":3,"statement":"s-3","participant":{"id":1,"username":"user1"},"bet":{"id":1,"title":"t-1","description":"d-1","commissioner":{"id":1,"username":"user1"}}}'
+        response.text == '{"id":3,"statement":"s-3","participant":{"id":1,"username":"user1"},"bet":{"id":1,' +
+                '"title":"t-1","rules":"r-1","description":"d-1","commissioner":{"id":1,"username":"user1"},' +
+                '"participations":[{"id":1,"statement":"s-1","participant":{"id":1,"username":"user1"}},' +
+                '{"id":2,"statement":"s-2","participant":{"id":2,"username":"user1"}},{"id":3,"statement":"s-3",' +
+                '"participant":{"id":1,"username":"user1"}}]}}'
         Participation.count() == 3
     }
 
@@ -67,7 +74,10 @@ class ParticipationSuperControllerSpec extends Specification implements Controll
 
         then:
         response.status == 200
-        response.text == '{"id":1,"statement":"s-1","participant":{"id":1,"username":"user1"},"bet":{"id":1,"title":"t-1","description":"d-1","commissioner":{"id":1,"username":"user1"}}}'
+        response.text == '{"id":1,"statement":"s-1","participant":{"id":1,"username":"user1"},"bet":{"id":1,' +
+                '"title":"t-1","rules":"r-1","description":"d-1","commissioner":{"id":1,"username":"user1"},' +
+                '"participations":[{"id":1,"statement":"s-1","participant":{"id":1,"username":"user1"}},' +
+                '{"id":2,"statement":"s-2","participant":{"id":2,"username":"user1"}}]}}'
         Participation.count() == 2
     }
 
@@ -79,7 +89,10 @@ class ParticipationSuperControllerSpec extends Specification implements Controll
 
         then:
         response.status == 200
-        response.text == '{"id":1,"statement":"s-1","participant":{"id":1,"username":"user1"},"bet":{"id":1,"title":"t-1","description":"d-1","commissioner":{"id":1,"username":"user1"}}}'
+        response.text == '{"id":1,"statement":"s-1","participant":{"id":1,"username":"user1"},"bet":{"id":1,' +
+                '"title":"t-1","rules":"r-1","description":"d-1","commissioner":{"id":1,"username":"user1"},' +
+                '"participations":[{"id":1,"statement":"s-1","participant":{"id":1,"username":"user1"}},{"id":2,' +
+                '"statement":"s-2","participant":{"id":2,"username":"user1"}}]}}'
         Participation.count() == 2
     }
 
