@@ -18,5 +18,15 @@ json {
             statement participation.statement
             participant tmpl.render(participation.participant)
         }
+        if (participation.bet.result) {
+            result {
+                reasoning participation.bet.result.reasoning
+                winners participation.bet.result.winners, { Participation participation ->
+                    id participation.id
+                    statement participation.statement
+                    participant tmpl.render(participation.participant)
+                }
+            }
+        }
     }
 }
