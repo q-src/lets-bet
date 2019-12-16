@@ -18,8 +18,8 @@
     </form>
   </mat-tab>
   <mat-tab label="Other's Statement">
-    <mat-list>
-      <mat-list-item *ngFor="let participation of participation.bet.participations">
+    <mat-list #list>
+      <mat-list-item *ngFor="let participation of getOtherParticipations()">
         <h4 mat-line>{{participation.participant.username}}</h4>
         <p mat-line>{{participation.statement}}</p>
       </mat-list-item>

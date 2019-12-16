@@ -30,7 +30,8 @@ describe('ParticipationFormComponent', () => {
     component = fixture.componentInstance;
     component.participation = {
       bet: {
-        commissioner: {} as User
+        commissioner: {} as User,
+        participations: []
       } as Bet,
     } as Participation;
     fixture.detectChanges();

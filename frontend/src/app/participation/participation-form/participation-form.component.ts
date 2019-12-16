@@ -38,4 +38,10 @@ export class ParticipationFormComponent implements OnInit, OnDestroy {
     this.destroy$.next();
   }
 
+  getOtherParticipations() {
+    if (!this.participation.bet.participations) {
+      return [];
+    }
+    return this.participation.bet.participations.filter(p => p.id !== this.participation.id);
+  }
 }
