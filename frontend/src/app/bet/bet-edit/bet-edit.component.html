@@ -1,8 +1,8 @@
 <mat-vertical-stepper [linear]="true" #stepper>
   <mat-step>
     <ng-template matStepLabel>Specify the rules</ng-template>
-    <app-bet-form [bet]="bet" [disabled]="bet.isStarted || isCompleted()">
-      <button *ngIf="!bet.isStarted" mat-button color="primary" (click)="save()">Save</button>
+    <app-bet-form [bet]="bet" [disabled]="bet.isStarted || isCompleted()" #form>
+      <button *ngIf="!bet.isStarted" mat-button color="primary" (click)="save()" [disabled]="form.form?.invalid">Save</button>
     </app-bet-form>
   </mat-step>
   <mat-step [completed]="bet.isStarted || isCompleted()">

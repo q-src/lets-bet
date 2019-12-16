@@ -10,7 +10,7 @@
 </ul>
 
 <div *ngIf="participation.bet.result; else noResult">
-  <hr/>
+  <hr />
   <p>The bet has already been completed. The winners are:</p>
   <mat-list>
     <mat-list-item *ngFor="let participation of participation.bet.result.winners">
@@ -27,7 +27,7 @@
     <mat-tab label="My Statement">
       <form [formGroup]="form" class="vertical">
         <mat-form-field>
-          <input matInput formControlName="statement" placeholder="What is your bet?"/>
+          <textarea matInput formControlName="statement" placeholder="What is your bet?" cdkTextareaAutosize></textarea>
         </mat-form-field>
         <ng-content></ng-content>
       </form>

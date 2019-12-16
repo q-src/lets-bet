@@ -5,6 +5,8 @@
   </a>
 </mat-nav-list>
 
-<a mat-fab aria-label="Create a bet" routerLink="create">
+<p class="info" *ngIf="bets.length == 0">You have not created any bet.</p>
+
+<a mat-fab aria-label="Create a bet" routerLink="create" class="main">
   <mat-icon>add</mat-icon>
 </a>

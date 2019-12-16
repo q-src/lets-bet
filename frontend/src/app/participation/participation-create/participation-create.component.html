@@ -1,3 +1,3 @@
-<app-participation-form [participation]="participation">
-  <button mat-raised-button color="primary" (click)="save()" color="primary">Participate</button>
+<app-participation-form [participation]="participation" #form>
+  <button mat-raised-button color="primary" (click)="save()" color="primary" [disabled]="form.form?.invalid">Participate</button>
 </app-participation-form>

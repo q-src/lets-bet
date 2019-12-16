@@ -2,7 +2,7 @@
   <mat-step [completed]="false">
   <ng-template matStepLabel>Specify the rules</ng-template>
     <app-bet-form [bet]="bet" #form>
-      <button mat-button color="primary" (click)="save()">Save</button>
+      <button mat-button color="primary" (click)="save()" [disabled]="form.form?.invalid">Save</button>
     </app-bet-form>
   </mat-step>
   <mat-step>

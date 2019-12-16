@@ -1,5 +1,5 @@
-<form [formGroup]="form">
-  <mat-selection-list #selection [disabled]="disabled">
+<form [formGroup]="form" class="vertical">
+  <mat-selection-list #selection [disabled]="bet.result">
     <mat-list-option *ngFor="let participation of bet.participations" [value]="participation.id"
                      [selected]="isSelected(participation)">
       <h4 mat-line>{{participation.participant.username}}</h4>
@@ -7,7 +7,7 @@
     </mat-list-option>
   </mat-selection-list>
   <mat-form-field>
-    <textarea matInput formControlName="reasoning" placeholder="What are the reasons for your decision?"></textarea>
+    <textarea matInput formControlName="reasoning" placeholder="What are the reasons for your decision?" cdkTextareaAutosize></textarea>
   </mat-form-field>
-  <button *ngIf="!bet.result" mat-button color="primary" (click)="complete()">Complete bet</button>
+  <button *ngIf="!bet.result" mat-button color="primary" (click)="complete()" [disabled]="form.invalid">Complete bet</button>
 </form>

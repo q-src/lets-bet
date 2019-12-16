@@ -1,9 +1,13 @@
-<form [formGroup]="form">
+<form [formGroup]="form" class="vertical">
   <mat-form-field>
     <input matInput formControlName="username" placeholder="Username">
   </mat-form-field>
   <mat-form-field>
     <input matInput formControlName="password" placeholder="Password" type="password">
   </mat-form-field>
-  <button type="submit" color="primary" (click)="login()" mat-button>Login</button>
+  <button type="submit" color="primary" (click)="login()" mat-flat-button [disabled]="form.invalid">Login</button>
 </form>
+<p class="info">
+  Not yet registered?
+  <a mat-button routerLink="new">Register</a>
+</p>

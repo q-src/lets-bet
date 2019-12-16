@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" class="vertical">
   <mat-form-field>
     <input matInput formControlName="username" placeholder="Username">
   </mat-form-field>
@@ -8,5 +8,5 @@
   <mat-form-field>
     <input matInput formControlName="passwordRepeat" placeholder="Password Repeat" type="password">
   </mat-form-field>
-  <button type="submit" color="primary" [disabled]="form.invalid" (click)="register()" mat-button>Register</button>
+  <button type="submit" color="primary" [disabled]="form.invalid" (click)="register()" mat-flat-button>Register</button>
 </form>

@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Participation } from '../../participation-api/participation';
@@ -25,7 +25,7 @@ export class ParticipationFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.form = this.fb.group({
-      statement: this.fb.control(this.participation.statement),
+      statement: this.fb.control(this.participation.statement, Validators.required),
     });
     this.form.valueChanges
       .pipe(takeUntil(this.destroy$))

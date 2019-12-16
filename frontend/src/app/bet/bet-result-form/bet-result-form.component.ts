@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Bet } from '../../bet-api/bet';
 import { MatSelectionList } from '@angular/material';
 import { Participation } from '../../participation-api/participation';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResultApiService } from '../../result-api/result-api.service';
 import { Result } from '../../result-api/result';
 
@@ -33,9 +33,11 @@ export class BetResultFormComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       reasoning: this.fb.control({
-        value: this.bet.result ? this.bet.result.reasoning : undefined,
-        disabled: this.disabled,
-      })
+          value: this.bet.result ? this.bet.result.reasoning : undefined,
+          disabled: this.disabled,
+        },
+        Validators.required
+      )
     });
   }
 
@@ -48,7 +50,7 @@ export class BetResultFormComponent implements OnInit {
         reasoning: this.form.value.reasoning,
         winners: this.selection.selectedOptions.selected.map(option => ({id: option.value} as Participation)),
       } as Result
-    ).subscribe();
+    ).subscribe(() => window.location.reload());
   }
 
   isSelected(participation: Participation) {

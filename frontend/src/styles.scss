@@ -12,3 +12,13 @@ form.vertical {
   display: flex;
   flex-direction: column;
 }
+
+a.main, button.main {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+}
+
+p.info {
+  text-align: center;
+}

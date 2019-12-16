@@ -1,8 +1,8 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
-import {Bet} from '../../bet-api/bet';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Bet } from '../../bet-api/bet';
 
 @Component({
   selector: 'app-bet-form',
@@ -29,17 +29,23 @@ export class BetFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.form = this.fb.group({
       title: this.fb.control({
-        value: this.bet.title,
-        disabled: this.disabled,
-      }),
+          value: this.bet.title,
+          disabled: this.disabled,
+        },
+        Validators.required
+      ),
       description: this.fb.control({
-        value: this.bet.description,
-        disabled: this.disabled
-      }),
+          value: this.bet.description,
+          disabled: this.disabled
+        },
+        Validators.required
+      ),
       rules: this.fb.control({
-        value: this.bet.rules,
-        disabled: this.disabled,
-      }),
+          value: this.bet.rules,
+          disabled: this.disabled,
+        },
+        Validators.required
+      ),
     });
     this.form.valueChanges
       .pipe(takeUntil(this.destroy$))
